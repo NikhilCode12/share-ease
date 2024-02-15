@@ -16,7 +16,7 @@ function Header() {
   }, [activePage, newPath]);
 
   return (
-    <header className="bg-gray-800 border-b h-full border-gray-600">
+    <header className="bg-gray-800 border-b h-16 border-gray-600">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
@@ -108,20 +108,10 @@ function Header() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                  href="#"
+                  href="/files"
                 >
-                  Login
+                  Get Started
                 </motion.a>
-                <div className="hidden sm:flex">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="rounded-md bg-gray-200 px-5 py-2.5 text-sm font-medium text-gray-900"
-                    href="#"
-                  >
-                    Register
-                  </motion.a>
-                </div>
               </div>
               <div className="block md:hidden">
                 <button className="rounded bg-gray-200 p-2 text-gray-900 transition hover:text-gray-800/75">

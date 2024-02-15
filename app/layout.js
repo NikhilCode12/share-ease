@@ -1,5 +1,5 @@
-import { Rubik, Outfit } from "next/font/google";
-import Header from "./components/Header";
+import { Rubik } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const rubik = Rubik({ subsets: ["latin"] });
@@ -10,15 +10,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const childrenHeight = `calc(100vh - 4rem)`;
   return (
-    <html lang="en" className="h-[100vh]">
-      <body className={rubik.className}>
-        <div className="h-16">
-          <Header />
-        </div>
-        <div style={{ height: childrenHeight }}>{children}</div>
-      </body>
+    <html lang="en">
+      <ClerkProvider>
+        <body className={rubik.className}>{children}</body>
+      </ClerkProvider>
     </html>
   );
 }
