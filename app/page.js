@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Header from "./components/Header";
+import { ArrowUpCircle } from "lucide-react";
 
 export default function Home() {
   return (
@@ -40,9 +41,18 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="block w-full rounded-md border border-blue-700 bg-blue-700 px-12 py-3 text-sm font-medium text-white focus:outline-none focus:ring ring-gray-200 active:text-opacity-75 sm:w-auto"
-                href="/files"
+                href="/upload"
               >
-                Get Started
+                Start Sharing
+                <motion.div
+                  className="inline-block"
+                  whileHover={{ y: [0, -2, 0] }}
+                >
+                  <ArrowUpCircle
+                    size={22}
+                    className="inline-block ml-2 font-medium"
+                  />
+                </motion.div>
               </motion.a>
 
               <motion.a
