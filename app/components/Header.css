@@ -1,0 +1,6 @@
+.active {
+  color: darkblue;
+  font-weight: bold;
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1.1);
+}
