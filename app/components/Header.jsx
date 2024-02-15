@@ -2,16 +2,18 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 function Header() {
   const path = usePathname();
   const [activePage, setActivePage] = useState("Home");
   const newPath = path.slice(1);
+
   useEffect(() => {
     newPath === ""
       ? setActivePage("Home")
       : setActivePage(newPath.charAt(0).toUpperCase() + newPath.slice(2));
-  }, [activePage]);
+  }, [activePage, newPath]);
 
   return (
     <header className="bg-gray-800 border-b h-full">
@@ -24,7 +26,8 @@ function Header() {
             >
               {/* File share svg */}
               <span className="sr-only">ShareEase</span>
-              <svg
+              <motion.svg
+                whileHover={{ y: [0, -5, 0] }}
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
@@ -59,85 +62,69 @@ function Header() {
                   fill="#fff"
                   d="M18.607,23.441H22v8c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v-8h3.393	c0.54,0,0.81-0.653,0.428-1.034l-4.964-4.964c-0.473-0.473-1.241-0.473-1.714,0l-4.964,4.964	C17.797,22.788,18.067,23.441,18.607,23.441z"
                 ></path>
-              </svg>
-              <h1 className="hidden lg:flex ">ShareEase</h1>
+              </motion.svg>
+              <motion.h1
+                whileTap={{ scale: 0.975 }}
+                className="hidden lg:flex "
+              >
+                ShareEase
+              </motion.h1>
             </a>
           </div>
 
           <div className="md:flex md:items-center md:gap-12">
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
-                <li>
-                  <a
-                    className={`text-gray-100 transition hover:text-gray-200/75 ${
-                      activePage === "Home" ? "active" : ""
-                    }`}
-                    href="/"
-                    onClick={() => setActivePage("Home")}
-                  >
-                    Home
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className={`text-gray-100 transition hover:text-gray-200/75 ${
-                      activePage === "Upload" ? "active" : ""
-                    }`}
-                    href="/upload"
-                    onClick={() => setActivePage("Upload")}
-                  >
-                    Upload
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className={`text-gray-100 transition hover:text-gray-200/75 ${
-                      activePage === "About" ? "active" : ""
-                    }`}
-                    href="/about"
-                    onClick={() => setActivePage("About")}
-                  >
-                    About
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className={`text-gray-100 transition hover:text-gray-200/75 ${
-                      activePage === "Contact" ? "active" : ""
-                    }`}
-                    href="/contact"
-                    onClick={() => setActivePage("Contact")}
-                  >
-                    Contact
-                  </a>
-                </li>
+                <NavItem
+                  title="Home"
+                  href="/"
+                  setActivePage={setActivePage}
+                  activePage={activePage}
+                />
+                <NavItem
+                  title="Upload"
+                  href="/upload"
+                  setActivePage={setActivePage}
+                  activePage={activePage}
+                />
+                <NavItem
+                  title="About"
+                  href="/about"
+                  setActivePage={setActivePage}
+                  activePage={activePage}
+                />
+                <NavItem
+                  title="Contact"
+                  href="/contact"
+                  setActivePage={setActivePage}
+                  activePage={activePage}
+                />
               </ul>
             </nav>
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className="rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
                   href="#"
                 >
                   Login
-                </a>
-
+                </motion.a>
                 <div className="hidden sm:flex">
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     className="rounded-md bg-gray-200 px-5 py-2.5 text-sm font-medium text-gray-900"
                     href="#"
                   >
                     Register
-                  </a>
+                  </motion.a>
                 </div>
               </div>
-
               <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
+                <button className="rounded bg-gray-200 p-2 text-gray-900 transition hover:text-gray-800/75">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -159,6 +146,35 @@ function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function NavItem({ title, href, setActivePage, activePage }) {
+  const isActive = activePage === title;
+
+  return (
+    <li>
+      <a
+        className={`text-gray-100 transition hover:text-gray-200/75 flex flex-col items-center ${
+          isActive ? "active" : ""
+        }`}
+        href={href}
+        onClick={() => setActivePage(title)}
+      >
+        {title}
+        {isActive && <div className="active-dot"></div>}
+      </a>
+      <style jsx>{`
+        .active-dot {
+          width: 4px;
+          height: 4px;
+          background-color: skyblue;
+          border-radius: 50%;
+          display: inline-block;
+          margin-left: 4px;
+        }
+      `}</style>
+    </li>
   );
 }
 
