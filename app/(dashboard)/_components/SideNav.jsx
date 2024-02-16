@@ -136,7 +136,7 @@ function SideNav() {
               key={index}
               href={item.path}
               className={`flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-gray-700 ${
-                index === activeIndex ? "text-blue-400" : ""
+                index === activeIndex ? "bg-blue-600 text-gray-200" : ""
               }`}
               whileHover={{ scale: 1.025 }}
               whileTap={{ scale: 0.95 }}

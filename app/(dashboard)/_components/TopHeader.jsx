@@ -6,7 +6,7 @@ import React from "react";
 
 function TopHeader() {
   return (
-    <div className="flex p-[1.05rem] border-b border-gray-700 items-center justify-between md:justify-end">
+    <div className="flex p-3 border-b border-gray-700 items-center justify-between md:justify-end">
       <AlignJustify className="md:hidden text-gray-200" />
       {/* logo */}
       <Image
