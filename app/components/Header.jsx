@@ -108,7 +108,7 @@ function Header() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                  href="/files"
+                  href="/upload"
                 >
                   Get Started
                 </motion.a>

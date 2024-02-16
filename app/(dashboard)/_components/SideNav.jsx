@@ -1,16 +1,14 @@
 "use client";
 import {
   Files,
-  Github,
   LayoutDashboard,
-  Linkedin,
   Settings,
   StarsIcon,
-  Twitter,
   UploadCloud,
 } from "lucide-react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function SideNav() {
   const menuListItems = [
@@ -50,20 +48,23 @@ function SideNav() {
     {
       id: 1,
       label: "Github",
-      icon: Github,
+      icon: FaGithub,
       path: "https://github.com/NikhilCode12",
+      color: "white",
     },
     {
       id: 2,
       label: "LinkedIn",
-      icon: Linkedin,
+      icon: FaLinkedin,
       path: "https://www.linkedin.com/in/nikhil-sharma-41a287226/",
+      color: "lightblue",
     },
     {
       id: 3,
       label: "Twitter",
-      icon: Twitter,
+      icon: FaTwitter,
       path: "https://twitter.com/Sharma_Nikh12",
+      color: "skyblue",
     },
   ];
 
@@ -90,8 +91,8 @@ function SideNav() {
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="50"
-            height="50"
+            width="40"
+            height="40"
             viewBox="0 0 48 48"
           >
             <linearGradient
@@ -148,18 +149,18 @@ function SideNav() {
         })}
       </div>
       {/* Share links */}
-      <div className="flex px-4 gap-8 items-center absolute bottom-4 w-full justify-center">
+      <div className="flex gap-8 items-center absolute bottom-0 w-full px-4 bg-gray-700 rounded-sm py-6 justify-center">
         {socialLinks.map((item, index) => {
           return (
             <motion.a
               key={index}
               href={item.path}
-              className="flex items-center rounded-full bg-blue-500 p-2"
+              className="flex items-center rounded-full"
               target="_blank"
               whileHover={{ y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <item.icon size={20} />
+              <item.icon size={24} color={"white"} />
             </motion.a>
           );
         })}
