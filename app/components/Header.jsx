@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { UserButton } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 function Header() {
   const path = usePathname();
@@ -108,10 +110,15 @@ function Header() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                  href="/upload"
+                  href="/sign-in"
                 >
                   Get Started
                 </motion.a>
+                <UserButton
+                  appearance={{
+                    baseTheme: dark,
+                  }}
+                />
               </div>
               <div className="block md:hidden">
                 <button className="rounded bg-gray-200 p-2 text-gray-900 transition hover:text-gray-800/75">

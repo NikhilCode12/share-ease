@@ -1,4 +1,5 @@
 import { SignIn } from "@clerk/nextjs";
+import { neobrutalism } from "@clerk/themes";
 
 export default function Page() {
   return (
@@ -83,7 +84,11 @@ export default function Page() {
               </p>
             </div>
 
-            <SignIn />
+            <SignIn
+              appearance={{
+                baseTheme: neobrutalism,
+              }}
+            />
           </div>
         </main>
       </div>

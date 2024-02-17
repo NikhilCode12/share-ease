@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
+    "@clerk/themes": "^1.7.9",
     "dotenv": "^16.4.4",
     "firebase": "^10.8.0",
     "framer-motion": "^11.0.5",
